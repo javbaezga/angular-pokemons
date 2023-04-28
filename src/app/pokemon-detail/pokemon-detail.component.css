@@ -1,0 +1,21 @@
+.container {
+    border: 2px solid #C7CCD0;
+    background-color: white;
+    padding: 15px;
+}
+
+.field-label, .slider-label {
+    width: 70px;
+}
+
+#attack, #defense {
+    width: 100%;
+}
+
+.save-button:before {
+    content: url(../../assets/images/save-icon.svg);
+}
+
+.cancel-button:before {
+    content: url(../../assets/images/cancel-icon.svg);
+}

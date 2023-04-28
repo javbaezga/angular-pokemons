@@ -1,0 +1,85 @@
+.header {
+    display: table;
+    width: 100%;
+}
+
+.header, .body {
+    margin-bottom: 20px;
+}
+
+.search-box, .new-item {
+    display: inline;
+}
+
+.search-box {
+    width: 20%;
+    padding-left: 30px;
+    background: url(../../assets/images/search-icon.svg) no-repeat scroll 7px 7px white;
+    background-size: 15px;
+}
+
+.new-item {
+    float: right;
+}
+
+.new-item:before {
+    display: inline-block;
+    position: relative;
+    top: -1px;
+    width: 18px;
+    height: 20px;
+    margin-right: 3px;
+    vertical-align: middle;
+    content: url(../../assets/images/new-icon.svg);
+}
+
+.edit-item:before {
+    position: relative;
+    top: 3px;
+    content: url(../../assets/images/edit-icon.svg);
+}
+
+.delete-item:before {
+    content: url(../../assets/images/delete-icon.svg);
+}
+
+.image {
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.image:before {  
+    content: " ";
+    display: block;
+    position: absolute;
+    top: -10px;
+    left: -1px;
+    width: calc(100% + 1px);
+    height: calc(100% + 10px);
+    background-color: white;
+}
+
+.image:after {  
+    content: "\f127";
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 0px;
+    width: 100%;
+    font: normal 16px FontAwesome;
+    color: #646464;
+}
+
+@-moz-document url-prefix() {
+    .image:after {
+        top: 5px !important;
+        left: -5px !important;
+    }
+}
+
+#no-data {
+    padding: 8px;
+    border: 2px solid #C7CCD0;
+    background-color: white;
+}

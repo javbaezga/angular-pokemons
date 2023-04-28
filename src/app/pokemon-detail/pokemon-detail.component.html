@@ -1,0 +1,128 @@
+<div class="container">
+    <h3 id="title" class="center">{{ pokemon.id ? "Editar" : "Nuevo" }} Pokemon</h3>
+
+    <form [formGroup]="pokemonForm" #formDir="ngForm" (ngSubmit)="submit()">
+  
+    <div class="row">
+        <div class="col-5">
+            <div class="form-group">
+                <label class="field-label" for="name">Nombre:</label>
+
+                <input id="name"
+                    type="text"
+                    class="form-control"
+                    formControlName="name"
+                    maxlength="{{attrs.name.maxLength}}" />
+            </div>
+
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                <div *ngIf="name.errors?.['required']" id="name-required">
+                    Nombre es requerido.
+                </div>
+
+                <div *ngIf="name.errors?.['whitespace']" id="name-whitespace">
+                    Nombre es requerido.
+                </div>
+
+                <div *ngIf="name.errors?.['maxlength']" id="name-maxlength">
+                    Nombre debe ser máximo de {{name.errors?.['maxlength'].requiredLength}} caracteres de longitud.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-2"></div>
+
+        <div class="col-5">
+            <div class="form-group-right">
+                <label class="slider-label" for="attack-slider">Ataque:</label>
+
+                <app-slider id="attack"
+                    [min]="attrs.attack.minControl"
+                    [max]="attrs.attack.max"
+                    formControlName="attack" />
+            </div>
+
+            <div *ngIf="attack.invalid && (attack.dirty || attack.touched)" class="alert alert-danger">
+                <div *ngIf="attack.errors?.['required']" id="attack-required">
+                    Ataque es requerido.
+                </div>
+    
+                <div *ngIf="attack.errors?.['min']" id="attack-min">
+                    Ataque debe ser al menos de {{attack.errors?.['min'].min}}.
+                </div>
+    
+                <div *ngIf="attack.errors?.['max']" id="attack-max">
+                    Ataque debe ser máximo {{attack.errors?.['max'].max}}.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-5">
+            <div class="form-group">
+                <label class="field-label" for="image">Imagen:</label>
+
+                <input id="image"
+                    type="text"
+                    class="form-control"
+                    formControlName="image"
+                    maxlength="{{attrs.image.maxLength}}"
+                    placeholder="URL" />
+            </div>
+
+            <div *ngIf="image.invalid && (image.dirty || image.touched)" class="alert alert-danger">
+                <div *ngIf="image.errors?.['required']" id="image-required">
+                    Imagen es requerido.
+                </div>
+
+                <div *ngIf="image.errors?.['whitespace']" id="image-whitespace">
+                    Imagen es requerido.
+                </div>
+
+                <div *ngIf="image.errors?.['maxlength']" id="image-maxlength">
+                    Imagen debe ser máximo de {{image.errors?.['maxlength'].requiredLength}} caracteres de longitud.
+                </div>
+
+                <div *ngIf="image.errors?.['pattern']" id="image-pattern">
+                    Imagen debe ser una URL válida.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-2"></div>
+
+        <div class="col-5">
+            <div class="form-group-right">
+                <label class="slider-label" for="defense-slider">Defensa:</label>
+
+                <app-slider id="defense"
+                    [min]="attrs.defense.minControl"
+                    [max]="attrs.defense.max"
+                    formControlName="defense" />
+            </div>
+
+            <div *ngIf="defense.invalid && (defense.dirty || defense.touched)" class="alert alert-danger">
+                <div *ngIf="defense.errors?.['required']" id="defense-required">
+                    Defensa es requerido.
+                </div>
+
+                <div *ngIf="defense.errors?.['min']" id="defense-min">
+                    Defensa debe ser al menos de {{defense.errors?.['min'].min}}.
+                </div>
+    
+                <div *ngIf="defense.errors?.['max']" id="defense-max">
+                    Defensa debe ser máximo {{defense.errors?.['max'].max}}.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="center">
+        <button id="save-button" type="submit" class="save-button" [disabled]="pokemonForm.invalid">Guardar</button>
+
+        <button id="cancel-button" type="button" class="cancel-button" (click)="cancel()">Cancelar</button>
+    </div>
+
+    </form>
+</div>

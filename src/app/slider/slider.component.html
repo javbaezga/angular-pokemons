@@ -1,0 +1,17 @@
+<div class="slider-container">
+    <div class="slider-min-value">{{min}}</div>
+    <input #slider
+        id="{{id}}-slider"
+        class="slider slider-progress"
+        [class.ng-invalid]="hostContainClass('ng-invalid')"
+        [class.ng-touched]="touched"
+        [class.ng-dirty]="hostContainClass('ng-dirty')"
+        type="range"
+        [min]="min"
+        [max]="max"
+        [value]="value"
+        [disabled]="disabled"
+        (change)="change($event)"
+        (blur)="blur($event)">
+    <div class="slider-max-value">{{slider.value}} / {{max}}</div>
+</div>

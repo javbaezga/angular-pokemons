@@ -1,0 +1,41 @@
+<h3>Listado de Pokemon</h3>
+
+<div class="header">
+    <input #searchBox
+        id="search-box"
+        class="search-box form-control"
+        maxlength="50"
+        placeholder="Buscar"
+        [disabled]="overlayService.isVisible"
+        (input)="search(searchBox.value)" />
+    
+    <a id="new-item" class="new-item btn" [routerLink]="['', { outlets: { details: ['pokemons', 'add'] } }]">
+        Nuevo
+    </a>
+</div>
+
+<div class="body" *ngIf="data$ | async as data">
+    <table id="table-data" *ngIf="data.length">
+        <tr>
+            <th>Nombre</th>
+            <th>Imagen</th>
+            <th>Ataque</th>
+            <th>Defensa</th>
+            <th>Acciones</th>
+        </tr>
+        <tr *ngFor="let item of data">
+            <td>{{item.name}}</td>
+            <td class="center"><img [src]="item.image" class="image" title="{{item.name}}" alt=" " /></td>
+            <td>{{item.attack}}</td>
+            <td>{{item.defense}}</td>
+            <td class="center">
+                <a class="edit-item" href="javascript:void(0)" (click)="edit(item.id)" title="Editar"></a>
+                <a class="delete-item" href="javascript:void(0)" (click)="delete(item.id)" title="Eliminar"></a>
+            </td>
+        </tr>
+    </table>
+
+    <div id="no-data" *ngIf="!data.length">
+        No se encontraron resultados.
+    </div>
+</div>
